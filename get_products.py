@@ -18,8 +18,8 @@ from functions.getUserAgent import *
 
 #proxy = getProxy()
 domain = 'shein.com' # For checking if the URL is from the same domain
-debug = False # Set to True to limit to 1 page
-db_mode = True # True = MongoDB, False = JSON
+debug = True # Set to True to limit to 1 page
+db_mode = False # True = MongoDB, False = JSON
 
 with open('shein_categories.txt', 'r') as file: # Read URLs from file
     urls = file.readlines()
@@ -107,8 +107,10 @@ options.add_argument('--no-sandbox')
 options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--user-agent=' + GET_UA())
 options.add_argument('--incognito')
-options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-chrome_drvier_binary = '/opt/homebrew/bin/chromedriver'
+options.binary_location = "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+#options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+chrome_drvier_binary = "C:\\chromedriver-win64\\chromedriver.exe"
+#chrome_drvier_binary = '/opt/homebrew/bin/chromedriver'
 driver = webdriver.Chrome(service=Service(chrome_drvier_binary), options=options)
 
 for url in urls:
